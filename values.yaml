@@ -1,0 +1,19 @@
+controller:
+  image: 'harbor.jamezrin.name/jenkins/jenkins'
+  tag: 'latest'
+  imagePullSecretName: personal-registry
+  installPlugins: false
+
+  ingress:
+    enabled: true
+    paths: []
+    apiVersion: 'networking.k8s.io/v1'
+    labels: {}
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      traefik.ingress.kubernetes.io/router.tls: 'true'
+    hostName: jenkins.jamezrin.name
+    tls:
+      - secretName: jenkins.cluster.local
+        hosts:
+          - jenkins.jamezrin.name
