@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: harbor.jamezrin.name
-  IMAGE_PROJECT: jenkins
+  IMAGE_PROJECT: library
   IMAGE_NAME: jenkins
   IMAGE_ARCH: linux/amd64,linux/arm64
 
