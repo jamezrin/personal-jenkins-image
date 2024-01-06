@@ -1,5 +1,5 @@
 controller:
-  image: 'harbor.jamezrin.name/jenkins/jenkins'
+  image: 'harbor.jamezrin.name/library/jenkins'
   tag: 'latest'
   imagePullSecretName: personal-registry
   installPlugins: false
