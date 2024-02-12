@@ -25,4 +25,6 @@ RUN jenkins-plugin-cli --plugins \
     sonar \
     performance \
     maven-plugin \
-    nodejs
+    nodejs \
+    prometheus
+
