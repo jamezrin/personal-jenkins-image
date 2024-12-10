@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  REGISTRY: harbor.jamezrin.name
+  REGISTRY: harbor-harbor-ingress-tailscale-ingress
   IMAGE_PROJECT: library
   IMAGE_NAME: jenkins
   IMAGE_ARCH: linux/amd64,linux/arm64
@@ -14,7 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Login to my Registry
+      - name: Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+      - name: Login to registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}

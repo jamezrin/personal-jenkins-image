@@ -1,7 +1,12 @@
 controller:
-  image: 'harbor.jamezrin.name/library/jenkins'
-  tag: 'latest'
+  image:
+    registry: harbor.jamezrin.com
+    repository: library/jenkins
+    tag: latest
+    pullPolicy: Always
+  
   imagePullSecretName: personal-registry
+  
   installPlugins: false
 
   ingress:
@@ -12,8 +17,10 @@ controller:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
       traefik.ingress.kubernetes.io/router.tls: 'true'
-    hostName: jenkins.jamezrin.name
+    hostName: jenkins.jamezrin.com
     tls:
       - secretName: jenkins.cluster.local
         hosts:
-          - jenkins.jamezrin.name
+          - jenkins.jamezrin.com
+  prometheus:
+    enabled: true

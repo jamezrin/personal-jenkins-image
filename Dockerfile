@@ -27,4 +27,3 @@ RUN jenkins-plugin-cli --plugins \
     maven-plugin \
     nodejs \
     prometheus
-
