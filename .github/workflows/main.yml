@@ -30,12 +30,21 @@ jobs:
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build and push
+      - name: Build
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: true
           platforms: ${{ env.IMAGE_ARCH }}
+          push: false
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PROJECT }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PROJECT }}/${{ env.IMAGE_NAME }}:latest
+      - name: Push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: ${{ env.IMAGE_ARCH }}
+          push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_PROJECT }}/${{ env.IMAGE_NAME }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_PROJECT }}/${{ env.IMAGE_NAME }}:latest
