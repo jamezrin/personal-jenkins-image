@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  REGISTRY: harbor-harbor-ingress-tailscale-ingress
+  REGISTRY: harbor-ingress-tailscale.tail11c31.ts.net
   IMAGE_PROJECT: library
   IMAGE_NAME: jenkins
   IMAGE_ARCH: linux/amd64,linux/arm64
