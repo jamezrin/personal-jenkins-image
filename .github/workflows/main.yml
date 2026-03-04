@@ -27,7 +27,7 @@ jobs:
           registry_ip=$(sudo dig +short ${{ env.REGISTRY }})
           echo "hosts=${{ env.REGISTRY }}:$registry_ip" >> "$GITHUB_OUTPUT"
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
