@@ -37,7 +37,7 @@ jobs:
             [dns]
               nameservers=["100.100.100.100"]
       - name: Login to registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
